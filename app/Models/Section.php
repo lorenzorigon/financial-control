@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classes extends Model
+class Section extends Model
 {
     use HasFactory;
 
@@ -13,13 +13,13 @@ class Classes extends Model
         'name',
     ];
 
-    public function sections()
+    public function class()
     {
-        return $this->hasMany(Section::class, 'class_id');
+        return $this->belongsTo(Classes::class, 'class_id');
     }
 
     public function students()
     {
-        return $this->hasMany(Student::class, 'student_id');
+        return $this->hasMany(Student::class, 'section_id');
     }
 }
